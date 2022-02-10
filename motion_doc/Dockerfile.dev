@@ -1,0 +1,13 @@
+# TODO - Build application docker image
+# Base image
+FROM node:lts-alpine
+# Set working directory
+WORKDIR /app
+# Cache app dependencies
+COPY package*.json ./
+# Install dependencies
+RUN npm install
+# Add app to directory
+COPY . .
+# Start app
+CMD [ "npm", "run", "serve" ]

@@ -1,0 +1,17 @@
+# TODO - Build application docker image
+# Base image
+FROM node:lts-alpine
+# Set env variables
+ENV PORT=4000
+# Set working directory
+WORKDIR /app
+# Cache app dependencies
+COPY package*.json ./
+# Install dependencies
+RUN npm install
+# Add app to directory
+COPY . .
+# Expose port 4000
+EXPOSE 4000
+# Start app
+CMD [ "npm", "run", "dev" ]

@@ -1,0 +1,69 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: motion-pay-deployment
+  namespace: motion
+  labels:
+    component: motion-pay
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: motion-pay
+  template:
+    metadata:
+      labels:
+        component: motion-pay
+    spec:
+      containers:
+      - name: motion-pay
+        image: callezenwaka/motion-pay
+        imagePullPolicy: IfNotPresent
+        ports:
+          - containerPort: 8080
+            name: pay-port
+            protocol: TCP
+        readinessProbe:
+          failureThreshold: 2
+          httpGet:
+              path: /
+              port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          successThreshold: 1
+          timeoutSeconds: 1
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+              path: /
+              port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          successThreshold: 1
+          timeoutSeconds: 1
+        env:
+          - name: PORT
+            value: "8080"
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: motion-pay-service
+  namespace: motion
+spec:
+  type: NodePort
+  selector:
+    component: motion-pay
+  ports:
+    - port: 8080
+      protocol: TCP
+      name: pay-port
+      targetPort: 8080

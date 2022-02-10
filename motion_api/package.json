@@ -1,0 +1,35 @@
+{
+  "name": "demo_api",
+  "version": "1.0.0",
+  "description": "Algoboard backend api service",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon -r dotenv/config index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/callezenwaka/algoboard_api.git"
+  },
+  "keywords": [
+    "Node.js",
+    "docker",
+    "kubernetes",
+    "gcp"
+  ],
+  "author": "callisezenwaka@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/callezenwaka/algoboard_api/issues"
+  },
+  "homepage": "https://github.com/callezenwaka/algoboard_api#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "dotenv": "^10.0.0",
+    "nodemon": "^2.0.15"
+  }
+}
