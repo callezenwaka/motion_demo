@@ -1,4 +1,4 @@
-# motionstreak
+# motion-demo
 
 ## Project setup
 ```
