@@ -4,47 +4,45 @@ metadata:
   name: motion-ingress
   namespace: motion
   annotations:
-    kubernetes.io/ingress.class: "nginx"
-    nginx.ingress.kubernetes.io/use-regex: "true"
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
-    # nginx.ingress.kubernetes.io/ssl-redirect: "true"
-    # nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    kubernetes.io/ingress.class: "gce"
+    kubernetes.io/ingress.global-static-ip-name: motion-ip
+    networking.gke.io/managed-certificates: motion-cert
 spec:
   rules:
   - host: motion.com 
     http:
       paths:
-      - pathType: Prefix
-        path: /?(.*)
+      - pathType: ImplementationSpecific
+        path: /*
         backend:
           service:
             name: motion-web-service
             port:
               number: 8080
-      - pathType: Prefix
-        path: /api/?(.*)
+      - pathType: ImplementationSpecific
+        path: /api/*
         backend:
           service:
             name: motion-api-service
             port:
               number: 4000
-  - host: pay.motion.com 
-    http:
-      paths:
-      - pathType: Prefix
-        path: /?(.*)
-        backend:
-          service:
-            name: motion-pay-service
-            port:
-              number: 8080
   - host: doc.motion.com 
     http:
       paths:
-      - pathType: Prefix
-        path: /?(.*)
+      - pathType: ImplementationSpecific
+        path: /*
         backend:
           service:
             name: motion-doc-service
+            port:
+              number: 8080
+  - host: pay.motion.com 
+    http:
+      paths:
+      - pathType: ImplementationSpecific
+        path: /*
+        backend:
+          service:
+            name: motion-pay-service
             port:
               number: 8080
