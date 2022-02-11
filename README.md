@@ -10,6 +10,9 @@ git clone https://github.com/callezenwaka/motion_demo.git
 ### Point domains (motion.com; doc.motion.com; pay.motion.com) to localhost or 127.0.0.1 (macOS & linux)
 ```
 sudo nano /etc/hosts
+127.0.0.1       motion.com
+127.0.0.1       pay.motion.com
+127.0.0.1       doc.motion.com
 ```
 
 ### Change directory to k8s folder
@@ -36,7 +39,8 @@ kubectl get all -n motion
 ```
 kubectl get all -n ingress-nginx
 ```
-## Test various domains on browser (motion.com; doc.motion.com; pay.motion.com)
+
+Test various domains on browser (motion.com; doc.motion.com; pay.motion.com)
 
 # For production environment
 
