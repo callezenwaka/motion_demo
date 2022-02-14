@@ -82,7 +82,7 @@ Step 6 - Creating certificates and keys
 
 Step 7 - Create and set up a DNS record pointing at the ip address
 ```
-gcloud compute addresses create <name>-ip --global
+gcloud compute addresses create motion-ip --global
 ```
 ## For GCE Ingress, skip to step 8
 Step 7 - Creating certificates and keys
