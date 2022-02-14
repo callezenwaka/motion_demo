@@ -2,7 +2,7 @@
 
 // import axios from 'axios';
 import axios from "axios";
-type method = "get" | "GET" | "delete" | "DELETE" | "head" | "HEAD" | "options" | "OPTIONS" | "post" | "POST" | "put" | "PUT" | "patch" | "PATCH" | "purge" | "PURGE" | "link" | "LINK" | "unlink" | "UNLINK" | undefined;
+type method = "get" | "GET" | "delete" | "DELETE" | "post" | "POST" | "put" | "PUT" | undefined;
 
 // export default apiClient;
 import Username from '@/types/Username';
@@ -19,8 +19,6 @@ export const request = async (url: string, method: method, data?: Username): Pro
 };
 
 export const API_URL = '/api/';
-// export const API_URL = 'http://192.168.0.136:4000/api/';
-// export const API_URL = 'http://localhost:4000/api/';
 
 export default {
 	async addUsername(params: Username): Promise<unknown> {
