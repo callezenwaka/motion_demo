@@ -20,8 +20,6 @@ app.get('/healthz', (req, res) => {
 });
 
 // Verify request
-// Uncomment to deploy using gce ingress
-// app.use('/api/username', require("./routes/username"));
 // Uncomment to deploy using nginx ingress
 app.use('/username', require("./routes/username"));
 

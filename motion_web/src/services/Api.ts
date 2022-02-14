@@ -19,8 +19,6 @@ export const request = async (url: string, method: method, data?: Username): Pro
 };
 
 export const API_URL = '/api/';
-// export const API_URL = 'http://192.168.0.136:4000/api/';
-// export const API_URL = 'http://localhost:4000/api/';
 
 export default {
 	async addUsername(params: Username): Promise<unknown> {
