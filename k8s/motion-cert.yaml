@@ -1,0 +1,10 @@
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: motion-cert
+  namespace: motion
+spec:
+  domains:
+    - motion.com
+    - pay.motion.com
+    - docs.motion.com
